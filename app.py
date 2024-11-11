@@ -100,3 +100,4 @@ def handle_request(req):
 if __name__ == "__main__":
     print("App is running")
 print("Starting app...")
+print("Connecting to database...")
