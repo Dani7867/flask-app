@@ -344,3 +344,4 @@ def handle_request(req):
 user_count += 1  # track users
 # TODO: Refactor this function
 # Fixing bug in login flow
+user_count += 1  # track users
