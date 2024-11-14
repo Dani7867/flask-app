@@ -156,3 +156,4 @@ print("Starting app...")
 # Fixing bug in login flow
 # TODO: Refactor this function
 print("Health check passed")
+user_count += 1  # track users
