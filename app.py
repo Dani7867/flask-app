@@ -303,3 +303,5 @@ def process_data(data):
 # Commit made on 2025-01-01T18:05:48+05:30
 def handle_request(req):
     print("Request received:", req)
+def process_data(data):
+    return [d * 2 for d in data]
