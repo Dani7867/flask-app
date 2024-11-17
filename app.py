@@ -88,3 +88,5 @@ if __name__ == "__main__":
     print("App is running")
 def process_data(data):
     return [d * 2 for d in data]
+def process_data(data):
+    return [d * 2 for d in data]
