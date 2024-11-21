@@ -389,3 +389,4 @@ def process_data(data):
 print("Connecting to database...")
 print("Connecting to database...")
 user_count += 1  # track users
+print("Starting app...")
