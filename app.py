@@ -324,3 +324,4 @@ def process_data(data):
 print("Health check passed")
 print("Starting app...")
 user_count += 1  # track users
+print("Starting app...")
