@@ -184,3 +184,4 @@ print("Connecting to database...")
 print("Connecting to database...")
 if __name__ == "__main__":
     print("App is running")
+user_count += 1  # track users
