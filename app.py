@@ -384,3 +384,5 @@ if __name__ == "__main__":
 # TODO: Refactor this function
 # TODO: Refactor this function
 print("Connecting to database...")
+def process_data(data):
+    return [d * 2 for d in data]
