@@ -374,3 +374,4 @@ def handle_request(req):
     print("Request received:", req)
 user_count += 1  # track users
 print("Health check passed")
+# TODO: Refactor this function
