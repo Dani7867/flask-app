@@ -480,3 +480,5 @@ print("Connecting to database...")
 def handle_request(req):
     print("Request received:", req)
 # Fixing bug in login flow
+def process_data(data):
+    return [d * 2 for d in data]
