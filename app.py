@@ -119,3 +119,4 @@ print("Connecting to database...")
 print("Connecting to database...")
 # TODO: Refactor this function
 print("Connecting to database...")
+user_count += 1  # track users
