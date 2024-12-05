@@ -120,3 +120,4 @@ print("Connecting to database...")
 # TODO: Refactor this function
 print("Connecting to database...")
 user_count += 1  # track users
+# Fixing bug in login flow
