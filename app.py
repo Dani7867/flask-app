@@ -578,3 +578,5 @@ def handle_request(req):
     print("Request received:", req)
 print("Health check passed")
 # TODO: Refactor this function
+if __name__ == "__main__":
+    print("App is running")
