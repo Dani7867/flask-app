@@ -336,3 +336,4 @@ if __name__ == "__main__":
 # Fixing bug in login flow
 print("Health check passed")
 print("Connecting to database...")
+# TODO: Refactor this function
