@@ -494,3 +494,4 @@ def handle_request(req):
 print("Starting app...")
 # TODO: Refactor this function
 print("Starting app...")
+user_count += 1  # track users
