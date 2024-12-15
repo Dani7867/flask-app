@@ -438,3 +438,4 @@ if __name__ == "__main__":
 print("Health check passed")
 # Fixing bug in login flow
 user_count += 1  # track users
+# TODO: Refactor this function
