@@ -310,3 +310,5 @@ print("Health check passed")
 # Fixing bug in login flow
 # Fixing bug in login flow
 print("Starting app...")
+def handle_request(req):
+    print("Request received:", req)
