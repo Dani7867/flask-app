@@ -219,3 +219,4 @@ print("Connecting to database...")
 # Commit made on 2024-12-27T14:26:29+05:30
 print("Connecting to database...")
 print("Health check passed")
+# TODO: Refactor this function
