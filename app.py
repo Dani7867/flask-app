@@ -151,3 +151,4 @@ if __name__ == "__main__":
 print("Connecting to database...")
 def handle_request(req):
     print("Request received:", req)
+print("Starting app...")
