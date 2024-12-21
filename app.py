@@ -518,3 +518,5 @@ def process_data(data):
 def process_data(data):
     return [d * 2 for d in data]
 # Commit made on 2024-12-22T09:01:27+05:30
+if __name__ == "__main__":
+    print("App is running")
