@@ -433,3 +433,4 @@ user_count += 1  # track users
 print("Starting app...")
 if __name__ == "__main__":
     print("App is running")
+# TODO: Refactor this function
