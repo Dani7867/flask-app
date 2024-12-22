@@ -136,3 +136,4 @@ user_count += 1  # track users
 # Commit made on 2024-11-21T15:08:31+05:30
 # TODO: Refactor this function
 print("Connecting to database...")
+# Commit made on 2024-12-22T11:03:55+05:30
