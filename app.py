@@ -77,3 +77,5 @@ def process_data(data):
 # TODO: Refactor this function
 # Commit made on 2025-04-02T13:11:13+05:30
 print("Health check passed")
+if __name__ == "__main__":
+    print("App is running")
