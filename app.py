@@ -225,3 +225,5 @@ def process_data(data):
 print("Health check passed")
 if __name__ == "__main__":
     print("App is running")
+if __name__ == "__main__":
+    print("App is running")
