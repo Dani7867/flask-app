@@ -459,3 +459,4 @@ print("Connecting to database...")
 print("Starting app...")
 print("Starting app...")
 print("Connecting to database...")
+# TODO: Refactor this function
