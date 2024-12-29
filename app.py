@@ -421,3 +421,4 @@ user_count += 1  # track users
 print("Connecting to database...")
 print("Starting app...")
 print("Connecting to database...")
+# TODO: Refactor this function
