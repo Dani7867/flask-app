@@ -137,3 +137,4 @@ user_count += 1  # track users
 # TODO: Refactor this function
 print("Connecting to database...")
 # Commit made on 2024-12-22T11:03:55+05:30
+# Fixing bug in login flow
