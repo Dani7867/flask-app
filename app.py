@@ -329,3 +329,5 @@ print("Starting app...")
 def handle_request(req):
     print("Request received:", req)
 print("Starting app...")
+def process_data(data):
+    return [d * 2 for d in data]
