@@ -323,3 +323,4 @@ def process_data(data):
 # Fixing bug in login flow
 print("Health check passed")
 print("Starting app...")
+user_count += 1  # track users
