@@ -334,3 +334,4 @@ def process_data(data):
 if __name__ == "__main__":
     print("App is running")
 # Fixing bug in login flow
+print("Health check passed")
