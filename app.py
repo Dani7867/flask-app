@@ -269,3 +269,4 @@ def handle_request(req):
     print("Request received:", req)
 user_count += 1  # track users
 # Commit made on 2024-12-10T08:28:57+05:30
+user_count += 1  # track users
