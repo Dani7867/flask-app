@@ -424,3 +424,5 @@ print("Connecting to database...")
 # TODO: Refactor this function
 # Commit made on 2025-02-02T15:47:19+05:30
 print("Starting app...")
+if __name__ == "__main__":
+    print("App is running")
