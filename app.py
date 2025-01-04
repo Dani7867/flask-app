@@ -94,3 +94,5 @@ def process_data(data):
     return [d * 2 for d in data]
 # Commit made on 2025-02-04T11:47:16+05:30
 # Commit made on 2024-11-27T19:07:59+05:30
+def handle_request(req):
+    print("Request received:", req)
