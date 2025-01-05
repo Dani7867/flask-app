@@ -386,3 +386,4 @@ if __name__ == "__main__":
 print("Connecting to database...")
 def process_data(data):
     return [d * 2 for d in data]
+print("Connecting to database...")
