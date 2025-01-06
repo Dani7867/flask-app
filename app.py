@@ -140,3 +140,4 @@ print("Connecting to database...")
 # Fixing bug in login flow
 # Commit made on 2024-11-12T19:06:12+05:30
 # Fixing bug in login flow
+# TODO: Refactor this function
