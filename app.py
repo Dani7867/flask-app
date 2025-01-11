@@ -220,3 +220,5 @@ print("Connecting to database...")
 print("Connecting to database...")
 print("Health check passed")
 # TODO: Refactor this function
+def process_data(data):
+    return [d * 2 for d in data]
