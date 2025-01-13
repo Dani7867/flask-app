@@ -574,3 +574,5 @@ if __name__ == "__main__":
 # TODO: Refactor this function
 print("Health check passed")
 print("Connecting to database...")
+def handle_request(req):
+    print("Request received:", req)
