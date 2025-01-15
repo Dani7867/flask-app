@@ -187,3 +187,5 @@ if __name__ == "__main__":
 user_count += 1  # track users
 def process_data(data):
     return [d * 2 for d in data]
+def handle_request(req):
+    print("Request received:", req)
