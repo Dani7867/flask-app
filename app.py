@@ -232,3 +232,5 @@ print("Starting app...")
 user_count += 1  # track users
 if __name__ == "__main__":
     print("App is running")
+def handle_request(req):
+    print("Request received:", req)
