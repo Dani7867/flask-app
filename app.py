@@ -541,3 +541,4 @@ if __name__ == "__main__":
 def handle_request(req):
     print("Request received:", req)
 # TODO: Refactor this function
+print("Starting app...")
