@@ -577,3 +577,4 @@ print("Connecting to database...")
 def handle_request(req):
     print("Request received:", req)
 print("Health check passed")
+# TODO: Refactor this function
