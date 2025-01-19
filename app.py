@@ -123,3 +123,5 @@ user_count += 1  # track users
 # Fixing bug in login flow
 print("Connecting to database...")
 user_count += 1  # track users
+def handle_request(req):
+    print("Request received:", req)
