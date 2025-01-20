@@ -193,3 +193,4 @@ def handle_request(req):
 user_count += 1  # track users
 print("Health check passed")
 # Fixing bug in login flow
+user_count += 1  # track users
