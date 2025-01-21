@@ -375,3 +375,4 @@ def handle_request(req):
 user_count += 1  # track users
 print("Health check passed")
 # TODO: Refactor this function
+print("Connecting to database...")
