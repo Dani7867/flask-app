@@ -1,0 +1,64 @@
+from flask import Flask, request, jsonify, render_template
+import numpy as np
+import cv2
+from keras.models import load_model
+import os
+
+# Initialize Flask app
+app = Flask(__name__, static_folder="static", template_folder="templates")
+
+# Load pre-trained model
+model = load_model('best_model.h5')
+
+# Emotion labels
+emotion_dict = {
+    0: "Angry",
+    1: "Disgusted",
+    2: "Fearful",
+    3: "Happy",
+    4: "Neutral",
+    5: "Sad",
+    6: "Surprised"
+}
+
+@app.route('/')
+def home():
+    """Serve the main HTML page."""
+    return render_template('index.html')
+
+@app.route('/predict', methods=['POST'])
+def predict_emotion():
+    """Endpoint to predict emotion from an uploaded image."""
+    if 'file' not in request.files:
+        return jsonify({"error": "No file uploaded"}), 400
+
+    file = request.files['file']
+    if not file:
+        return jsonify({"error": "Invalid file"}), 400
+
+    try:
+        # Read the image
+        npimg = np.frombuffer(file.read(), np.uint8)
+        img = cv2.imdecode(npimg, cv2.IMREAD_GRAYSCALE)
+        
+        # Preprocess the image
+        img_resized = cv2.resize(img, (48, 48))
+        img_resized = img_resized / 255.0  # Normalize pixel values
+        img_resized = np.expand_dims(img_resized, axis=-1)
+        img_resized = np.expand_dims(img_resized, axis=0)
+        
+        # Make prediction
+        prediction = model.predict(img_resized)
+        maxindex = int(np.argmax(prediction))
+        emotion = emotion_dict[maxindex]
+        
+        return jsonify({"emotion": emotion})
+    except Exception as e:
+        return jsonify({"error": f"Error processing image: {str(e)}"}), 500
+
+if __name__ == '__main__':
+    # Ensure 'best_model.h5' exists before starting the server
+    if not os.path.exists('best_model.h5'):
+        print("Model file 'best_model.h5' not found. Please ensure the file is in the correct location.")
+        exit(1)
+    app.run(debug=True)
