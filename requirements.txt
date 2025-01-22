@@ -2,5 +2,5 @@ Flask==2.2.2
 werkzeug==2.2.2
 numpy==1.23.1
 opencv-python==4.5.5.64
-keras==2.8.0
-tensorflow==2.8.0
+keras==2.13.1
+tensorflow==2.13.0
