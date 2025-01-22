@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify, render_template
 import numpy as np
 import cv2
-from keras.models import load_model
+import tensorflow as tf
+from tensorflow.keras.models import load_model
 import os
 
 # Initialize Flask app
@@ -44,8 +45,8 @@ def predict_emotion():
         # Preprocess the image
         img_resized = cv2.resize(img, (48, 48))
         img_resized = img_resized / 255.0  # Normalize pixel values
-        img_resized = np.expand_dims(img_resized, axis=-1)
-        img_resized = np.expand_dims(img_resized, axis=0)
+        img_resized = np.expand_dims(img_resized, axis=-1)  # Add channel dimension
+        img_resized = np.expand_dims(img_resized, axis=0)   # Add batch dimension
         
         # Make prediction
         prediction = model.predict(img_resized)
