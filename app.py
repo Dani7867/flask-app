@@ -9,7 +9,7 @@ import os
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
 # Load pre-trained model
-model = load_model('best_model.h5')
+model = load_model('saved_model/best_model.keras')
 
 # Emotion labels
 emotion_dict = {
@@ -58,8 +58,9 @@ def predict_emotion():
         return jsonify({"error": f"Error processing image: {str(e)}"}), 500
 
 if __name__ == '__main__':
-    # Ensure 'best_model.h5' exists before starting the server
-    if not os.path.exists('best_model.h5'):
-        print("Model file 'best_model.h5' not found. Please ensure the file is in the correct location.")
+    # Ensure 'best_model.keras' exists before starting the server
+    model_path = 'saved_model/best_model.keras'
+    if not os.path.exists(model_path):
+        print(f"Model file '{model_path}' not found. Please ensure the file is in the correct location.")
         exit(1)
     app.run(debug=True)

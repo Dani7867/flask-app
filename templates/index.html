@@ -14,44 +14,68 @@
             margin-top: 20px;
             font-size: 24px;
         }
+        #video {
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
     <h1>Real-Time Emotion Detection</h1>
-    <input type="file" id="imageInput" accept="image/*">
-    <button onclick="uploadImage()">Upload and Predict</button>
+    <video id="video" width="640" height="480" autoplay></video>
     <p id="output"></p>
 
     <script>
-        function uploadImage() {
-            const fileInput = document.getElementById('imageInput');
-            const output = document.getElementById('output');
+        // Access webcam
+        const videoElement = document.getElementById('video');
+        const output = document.getElementById('output');
+        let videoStream;
 
-            if (fileInput.files.length === 0) {
-                output.textContent = "Please upload an image first.";
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const formData = new FormData();
-            formData.append('file', file);
-
-            fetch('http://127.0.0.1:5000/predict', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    output.textContent = "Error: " + data.error;
-                } else {
-                    output.textContent = "Predicted Emotion: " + data.emotion;
-                }
+        // Request webcam access and start streaming
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                videoElement.srcObject = stream;
+                videoStream = stream;
             })
             .catch(error => {
-                output.textContent = "Error: " + error.message;
+                output.textContent = "Error accessing webcam: " + error.message;
             });
+
+        // Function to capture image and send it to the Flask backend for prediction
+        function captureAndPredict() {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+            // Convert the canvas image to a Blob
+            canvas.toBlob(blob => {
+                const formData = new FormData();
+                formData.append('file', blob, 'image.jpg');
+
+                // Send image to Flask backend for emotion prediction
+                fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        output.textContent = "Error: " + data.error;
+                    } else {
+                        output.textContent = "Predicted Emotion: " + data.emotion;
+                    }
+                })
+                .catch(error => {
+                    output.textContent = "Error: " + error.message;
+                });
+            }, 'image/jpeg');
         }
+
+        // Capture frame every second
+        setInterval(captureAndPredict, 1000);  // Capture frame every 1 second
     </script>
 </body>
 </html>

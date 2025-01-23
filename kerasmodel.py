@@ -1,13 +1,14 @@
 import numpy as np
 import argparse
 import cv2
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
-from keras.optimizers import Adam
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 import os
 import matplotlib.pyplot as plt
+from tensorflow.keras.models import Sequential, load_model
+from tensorflow.keras.layers import Input, Dense, Dropout, Flatten, Conv2D, MaxPooling2D
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers.schedules import ExponentialDecay
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
 
 # Suppress TensorFlow logs
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -18,11 +19,18 @@ parser.add_argument("--mode", default="train", help="Mode: 'train' or 'display'"
 args = parser.parse_args()
 mode = args.mode
 
+# Define the learning rate schedule
+lr_schedule = ExponentialDecay(
+    initial_learning_rate=0.0001,
+    decay_steps=100000,
+    decay_rate=0.96,
+    staircase=False
+)
+
+# Plot function for training history
 def plot_model_history(history):
     """Plot Accuracy and Loss curves given the model history."""
     fig, axs = plt.subplots(1, 2, figsize=(15, 5))
-    
-    # Accuracy
     axs[0].plot(history.history['accuracy'], label='Train Accuracy')
     axs[0].plot(history.history['val_accuracy'], label='Validation Accuracy')
     axs[0].set_title('Model Accuracy')
@@ -30,7 +38,6 @@ def plot_model_history(history):
     axs[0].set_ylabel('Accuracy')
     axs[0].legend(loc='best')
 
-    # Loss
     axs[1].plot(history.history['loss'], label='Train Loss')
     axs[1].plot(history.history['val_loss'], label='Validation Loss')
     axs[1].set_title('Model Loss')
@@ -51,8 +58,8 @@ batch_size = 64
 num_epochs = 50
 
 # Data Generators
-train_datagen = ImageDataGenerator(rescale=1.0/255)
-val_datagen = ImageDataGenerator(rescale=1.0/255)
+train_datagen = ImageDataGenerator(rescale=1.0 / 255)
+val_datagen = ImageDataGenerator(rescale=1.0 / 255)
 
 train_generator = train_datagen.flow_from_directory(
     train_dir, target_size=(48, 48), batch_size=batch_size,
@@ -62,19 +69,18 @@ val_generator = val_datagen.flow_from_directory(
     val_dir, target_size=(48, 48), batch_size=batch_size,
     color_mode="grayscale", class_mode='categorical')
 
-# Model Definition
+# Build the model
 model = Sequential([
-    Conv2D(32, (3, 3), activation='relu', input_shape=(48, 48, 1)),
+    Input(shape=(48, 48, 1)),
+    Conv2D(32, (3, 3), activation='relu'),
     Conv2D(64, (3, 3), activation='relu'),
     MaxPooling2D(pool_size=(2, 2)),
     Dropout(0.25),
-
     Conv2D(128, (3, 3), activation='relu'),
     MaxPooling2D(pool_size=(2, 2)),
     Conv2D(128, (3, 3), activation='relu'),
     MaxPooling2D(pool_size=(2, 2)),
     Dropout(0.25),
-
     Flatten(),
     Dense(1024, activation='relu'),
     Dropout(0.5),
@@ -83,12 +89,31 @@ model = Sequential([
 
 # Training Mode
 if mode == "train":
-    model.compile(optimizer=Adam(learning_rate=0.0001, decay=1e-6),
-                  loss='categorical_crossentropy', metrics=['accuracy'])
+    optimizer = Adam(learning_rate=lr_schedule)
+    model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
 
     # Callbacks
-    checkpoint = ModelCheckpoint("best_model.h5", monitor="val_accuracy", save_best_only=True, verbose=1)
-    reduce_lr = ReduceLROnPlateau(monitor="val_loss", factor=0.5, patience=5, min_lr=0.00001, verbose=1)
+    checkpoint = ModelCheckpoint(
+    "saved_model/best_model.keras", 
+    monitor="val_accuracy",
+    save_best_only=True, 
+    verbose=1
+    )
+
+    reduce_lr = ReduceLROnPlateau(
+    monitor="val_loss", 
+    factor=0.5, 
+    patience=5, 
+    min_lr=0.00001, 
+    verbose=1
+    )
+
+    early_stop = EarlyStopping(
+    monitor="val_loss", 
+    patience=10, 
+    restore_best_weights=True, 
+    verbose=1
+    )
 
     history = model.fit(
         train_generator,
@@ -96,17 +121,16 @@ if mode == "train":
         epochs=num_epochs,
         validation_data=val_generator,
         validation_steps=val_generator.samples // batch_size,
-        callbacks=[checkpoint, reduce_lr]
+        callbacks=[checkpoint, reduce_lr, early_stop]
     )
 
     plot_model_history(history)
 
 # Display Mode
 elif mode == "display":
-    # Load model weights
-    model.load_weights('best_model.h5')
+    model = load_model("saved_model/best_model.keras")
     emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
-    
+
     # OpenCV Webcam
     cap = cv2.VideoCapture(0)
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -121,14 +145,14 @@ elif mode == "display":
 
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
-            roi_gray = gray_frame[y:y+h, x:x+w]
+            roi_gray = gray_frame[y:y + h, x:x + w]
             cropped_img = cv2.resize(roi_gray, (48, 48))
             cropped_img = np.expand_dims(cropped_img, axis=0)
             cropped_img = np.expand_dims(cropped_img, axis=-1)
 
             prediction = model.predict(cropped_img)
             maxindex = int(np.argmax(prediction))
-            cv2.putText(frame, emotion_dict[maxindex], (x, y-10),
+            cv2.putText(frame, emotion_dict[maxindex], (x, y - 10),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
 
         cv2.imshow('Emotion Detection', frame)
