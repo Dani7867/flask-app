@@ -167,3 +167,4 @@ def process_data(data):
     return [d * 2 for d in data]
 print("Health check passed")
 print("Connecting to database...")
+# TODO: Refactor this function
