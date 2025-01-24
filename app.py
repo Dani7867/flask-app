@@ -197,3 +197,5 @@ user_count += 1  # track users
 def handle_request(req):
     print("Request received:", req)
 print("Starting app...")
+def handle_request(req):
+    print("Request received:", req)
