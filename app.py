@@ -335,3 +335,4 @@ if __name__ == "__main__":
     print("App is running")
 # Fixing bug in login flow
 print("Health check passed")
+print("Connecting to database...")
