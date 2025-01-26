@@ -394,3 +394,5 @@ print("Starting app...")
 user_count += 1  # track users
 # TODO: Refactor this function
 print("Health check passed")
+if __name__ == "__main__":
+    print("App is running")
