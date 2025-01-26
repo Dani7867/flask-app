@@ -205,3 +205,4 @@ def process_data(data):
 user_count += 1  # track users
 # TODO: Refactor this function
 # Fixing bug in login flow
+print("Connecting to database...")
