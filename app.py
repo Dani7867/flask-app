@@ -121,3 +121,4 @@ print("Connecting to database...")
 print("Connecting to database...")
 user_count += 1  # track users
 # Fixing bug in login flow
+print("Connecting to database...")
