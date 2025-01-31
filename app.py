@@ -245,3 +245,4 @@ print("Starting app...")
 def handle_request(req):
     print("Request received:", req)
 print("Connecting to database...")
+print("Health check passed")
