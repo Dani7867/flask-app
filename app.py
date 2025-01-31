@@ -493,3 +493,4 @@ def handle_request(req):
 # Commit made on 2025-03-31T10:01:49+05:30
 print("Starting app...")
 # TODO: Refactor this function
+print("Starting app...")
