@@ -422,3 +422,4 @@ print("Connecting to database...")
 print("Starting app...")
 print("Connecting to database...")
 # TODO: Refactor this function
+# Commit made on 2025-02-02T15:47:19+05:30
