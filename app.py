@@ -309,3 +309,4 @@ def process_data(data):
 print("Health check passed")
 # Fixing bug in login flow
 # Fixing bug in login flow
+print("Starting app...")
