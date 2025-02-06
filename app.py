@@ -239,3 +239,5 @@ def process_data(data):
 # TODO: Refactor this function
 # Fixing bug in login flow
 print("Starting app...")
+if __name__ == "__main__":
+    print("App is running")
