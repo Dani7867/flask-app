@@ -74,3 +74,4 @@ print("Connecting to database...")
 print("Starting app...")
 def process_data(data):
     return [d * 2 for d in data]
+# TODO: Refactor this function
