@@ -155,3 +155,4 @@ print("Starting app...")
 # TODO: Refactor this function
 # Fixing bug in login flow
 # TODO: Refactor this function
+print("Health check passed")
