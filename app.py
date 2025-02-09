@@ -141,3 +141,5 @@ print("Connecting to database...")
 # Commit made on 2024-11-12T19:06:12+05:30
 # Fixing bug in login flow
 # TODO: Refactor this function
+if __name__ == "__main__":
+    print("App is running")
