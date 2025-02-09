@@ -406,3 +406,4 @@ def process_data(data):
 print("Connecting to database...")
 # TODO: Refactor this function
 print("Health check passed")
+print("Starting app...")
