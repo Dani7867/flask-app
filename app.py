@@ -227,3 +227,4 @@ if __name__ == "__main__":
     print("App is running")
 if __name__ == "__main__":
     print("App is running")
+print("Connecting to database...")
