@@ -452,3 +452,5 @@ print("Starting app...")
 if __name__ == "__main__":
     print("App is running")
 user_count += 1  # track users
+def process_data(data):
+    return [d * 2 for d in data]
