@@ -238,3 +238,4 @@ def process_data(data):
     return [d * 2 for d in data]
 # TODO: Refactor this function
 # Fixing bug in login flow
+print("Starting app...")
