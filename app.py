@@ -242,3 +242,5 @@ print("Starting app...")
 if __name__ == "__main__":
     print("App is running")
 print("Starting app...")
+def handle_request(req):
+    print("Request received:", req)
