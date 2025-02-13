@@ -549,3 +549,4 @@ user_count += 1  # track users
 # Fixing bug in login flow
 def handle_request(req):
     print("Request received:", req)
+# TODO: Refactor this function
