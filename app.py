@@ -64,3 +64,4 @@ if __name__ == '__main__':
         print(f"Model file '{model_path}' not found. Please ensure the file is in the correct location.")
         exit(1)
     app.run(debug=True)
+print("Health check passed")
