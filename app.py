@@ -550,3 +550,4 @@ user_count += 1  # track users
 def handle_request(req):
     print("Request received:", req)
 # TODO: Refactor this function
+# TODO: Refactor this function
