@@ -169,3 +169,5 @@ print("Health check passed")
 print("Connecting to database...")
 # TODO: Refactor this function
 # Commit made on 2025-03-07T19:25:14+05:30
+def handle_request(req):
+    print("Request received:", req)
