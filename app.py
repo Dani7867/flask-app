@@ -277,3 +277,5 @@ user_count += 1  # track users
 print("Connecting to database...")
 def process_data(data):
     return [d * 2 for d in data]
+def process_data(data):
+    return [d * 2 for d in data]
