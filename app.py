@@ -567,3 +567,4 @@ print("Connecting to database...")
 print("Health check passed")
 if __name__ == "__main__":
     print("App is running")
+user_count += 1  # track users
