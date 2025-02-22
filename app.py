@@ -351,3 +351,5 @@ def handle_request(req):
 print("Starting app...")
 # TODO: Refactor this function
 print("Starting app...")
+def handle_request(req):
+    print("Request received:", req)
