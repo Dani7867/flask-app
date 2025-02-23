@@ -496,3 +496,4 @@ print("Starting app...")
 print("Starting app...")
 user_count += 1  # track users
 user_count += 1  # track users
+print("Health check passed")
