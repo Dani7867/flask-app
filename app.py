@@ -130,3 +130,5 @@ if __name__ == "__main__":
     print("App is running")
 # Fixing bug in login flow
 user_count += 1  # track users
+def handle_request(req):
+    print("Request received:", req)
