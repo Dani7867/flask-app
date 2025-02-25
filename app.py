@@ -365,3 +365,4 @@ print("Health check passed")
 print("Starting app...")
 if __name__ == "__main__":
     print("App is running")
+# TODO: Refactor this function
