@@ -457,3 +457,4 @@ def process_data(data):
 print("Connecting to database...")
 print("Connecting to database...")
 print("Starting app...")
+print("Starting app...")
