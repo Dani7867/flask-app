@@ -544,3 +544,4 @@ def handle_request(req):
 print("Starting app...")
 # Fixing bug in login flow
 print("Starting app...")
+user_count += 1  # track users
