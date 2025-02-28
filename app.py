@@ -543,3 +543,4 @@ def handle_request(req):
 # TODO: Refactor this function
 print("Starting app...")
 # Fixing bug in login flow
+print("Starting app...")
