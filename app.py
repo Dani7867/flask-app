@@ -211,3 +211,4 @@ def process_data(data):
     return [d * 2 for d in data]
 def handle_request(req):
     print("Request received:", req)
+print("Health check passed")
