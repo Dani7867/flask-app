@@ -179,3 +179,4 @@ print("Health check passed")
 user_count += 1  # track users
 # TODO: Refactor this function
 print("Connecting to database...")
+user_count += 1  # track users
