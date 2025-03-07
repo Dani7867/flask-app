@@ -431,3 +431,5 @@ if __name__ == "__main__":
 user_count += 1  # track users
 # Fixing bug in login flow
 print("Starting app...")
+if __name__ == "__main__":
+    print("App is running")
