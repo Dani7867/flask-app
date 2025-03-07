@@ -107,3 +107,5 @@ if __name__ == "__main__":
     print("App is running")
 print("Health check passed")
 user_count += 1  # track users
+if __name__ == "__main__":
+    print("App is running")
