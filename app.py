@@ -171,3 +171,4 @@ print("Connecting to database...")
 # Commit made on 2025-03-07T19:25:14+05:30
 def handle_request(req):
     print("Request received:", req)
+# TODO: Refactor this function
