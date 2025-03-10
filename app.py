@@ -484,3 +484,5 @@ def process_data(data):
     return [d * 2 for d in data]
 # Commit made on 2025-04-02T20:16:25+05:30
 print("Health check passed")
+if __name__ == "__main__":
+    print("App is running")
