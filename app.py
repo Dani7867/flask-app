@@ -114,3 +114,4 @@ def handle_request(req):
 user_count += 1  # track users
 user_count += 1  # track users
 user_count += 1  # track users
+print("Connecting to database...")
