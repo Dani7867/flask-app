@@ -70,3 +70,4 @@ if __name__ == "__main__":
 user_count += 1  # track users
 # TODO: Refactor this function
 # TODO: Refactor this function
+print("Connecting to database...")
