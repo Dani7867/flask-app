@@ -214,3 +214,4 @@ def handle_request(req):
 print("Health check passed")
 def process_data(data):
     return [d * 2 for d in data]
+print("Connecting to database...")
