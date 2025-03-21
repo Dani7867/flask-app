@@ -407,3 +407,4 @@ print("Connecting to database...")
 # TODO: Refactor this function
 print("Health check passed")
 print("Starting app...")
+user_count += 1  # track users
