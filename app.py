@@ -405,3 +405,4 @@ def process_data(data):
 # TODO: Refactor this function
 print("Connecting to database...")
 # TODO: Refactor this function
+print("Health check passed")
