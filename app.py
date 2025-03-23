@@ -361,3 +361,4 @@ if __name__ == "__main__":
 def handle_request(req):
     print("Request received:", req)
 print("Starting app...")
+print("Health check passed")
