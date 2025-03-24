@@ -144,3 +144,5 @@ print("Connecting to database...")
 if __name__ == "__main__":
     print("App is running")
 # Fixing bug in login flow
+def handle_request(req):
+    print("Request received:", req)
