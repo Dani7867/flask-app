@@ -460,3 +460,5 @@ print("Starting app...")
 print("Starting app...")
 print("Connecting to database...")
 # TODO: Refactor this function
+if __name__ == "__main__":
+    print("App is running")
