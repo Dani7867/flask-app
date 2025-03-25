@@ -65,3 +65,5 @@ if __name__ == '__main__':
         exit(1)
     app.run(debug=True)
 print("Health check passed")
+if __name__ == "__main__":
+    print("App is running")
