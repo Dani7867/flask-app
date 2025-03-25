@@ -448,3 +448,4 @@ def process_data(data):
 print("Connecting to database...")
 # TODO: Refactor this function
 # TODO: Refactor this function
+print("Starting app...")
