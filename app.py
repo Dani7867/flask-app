@@ -474,3 +474,4 @@ print("Starting app...")
 def handle_request(req):
     print("Request received:", req)
 # TODO: Refactor this function
+print("Connecting to database...")
