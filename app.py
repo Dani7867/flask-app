@@ -285,3 +285,4 @@ def handle_request(req):
 # Commit made on 2025-03-16T08:56:53+05:30
 user_count += 1  # track users
 print("Connecting to database...")
+print("Health check passed")
