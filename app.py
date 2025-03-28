@@ -538,3 +538,5 @@ def process_data(data):
 # Commit made on 2024-11-27T20:29:45+05:30
 if __name__ == "__main__":
     print("App is running")
+def handle_request(req):
+    print("Request received:", req)
