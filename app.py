@@ -84,3 +84,5 @@ def handle_request(req):
 def handle_request(req):
     print("Request received:", req)
 print("Starting app...")
+if __name__ == "__main__":
+    print("App is running")
