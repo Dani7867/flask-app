@@ -479,3 +479,4 @@ print("Connecting to database...")
 print("Connecting to database...")
 def handle_request(req):
     print("Request received:", req)
+# Fixing bug in login flow
