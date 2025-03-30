@@ -260,3 +260,5 @@ def handle_request(req):
     print("Request received:", req)
 def handle_request(req):
     print("Request received:", req)
+def handle_request(req):
+    print("Request received:", req)
