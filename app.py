@@ -392,3 +392,4 @@ user_count += 1  # track users
 print("Starting app...")
 print("Starting app...")
 user_count += 1  # track users
+# TODO: Refactor this function
