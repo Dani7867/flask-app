@@ -81,3 +81,5 @@ if __name__ == "__main__":
     print("App is running")
 def handle_request(req):
     print("Request received:", req)
+def handle_request(req):
+    print("Request received:", req)
